@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
-  const authStatus = useSelector((state) => state.auth?.status);
-  // const authStatus = useSelector((state)=> state.auth.status)
+  // const authStatus = useSelector((state) => state.auth?.status);
+  const authStatus = useSelector((state)=> state.auth.status)
   const navigate = useNavigate(); //insted this we can also use link(it just work like link)
 
   const navItems = [
@@ -42,7 +42,7 @@ const Header = () => {
       <Container>
         <nav className='flex'>
           <div className='mr-4' >
-              <Link to="/">
+              <Link to='/'>
               <Logo  width='70px'/>
               </Link>
           </div>

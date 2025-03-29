@@ -10,15 +10,10 @@ import Login from "./Login";
 
 import PostForm from "./post-form/PostForm";
 import PostCard from "./PostCard";
-import AuthLayout from "./AuthLayout";
-// import Home from ".././pages/Home"
+import AuthLayout from "./AuthLayout"; 
 import Button from "./Button"
 import Input from "./Input";
-import Select from "./Select";
-// import Post from "../pages/Post";
-// import EditPost from "../pages/EditPost"
-// import AddPost from "../pages/AddPost"
-// import AllPosts from "../pages/AllPosts"
+import Select from "./Select"; 
 
 export{
     Header,
@@ -31,14 +26,8 @@ export{
     Login, 
     PostForm,
     PostCard,
-    AuthLayout,
-    // Home,
+    AuthLayout, 
     Button,
     Input,
-    Select,
-    // Post,
-    // AddPost,
-    // EditPost,
-    // AllPosts
-
+    Select, 
 }

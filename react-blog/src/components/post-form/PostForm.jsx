@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
-import { Button, Input, Select, RTE } from "../index"
-import authService from '../../appwrite/config'
+import { Button, Input, Select, RTE } from ".." //../index -> ".." 
+import appwriteService from '../../appwrite/config';
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -9,14 +9,14 @@ function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
-            slug: post?.slug || '',
+            slug: post?.$id || '',
             content: post?.content || '',
             status: post?.status || 'active',
         },
     })
 
     const navigate = useNavigate();
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector(state => state.auth.userData)
 
     const submit = async (data) => {
         if (post) {
@@ -30,7 +30,7 @@ function PostForm({ post }) {
             })
 
             if (dbPost) {
-                navigate(`/post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`);
             }
 
         } else {
@@ -55,9 +55,9 @@ function PostForm({ post }) {
             return value
                 .trim()
                 .toLowerCase()
-                .replace(/^[a-zA-Z\d\s]+/g, '-')
-                .replace(/\s/g, '-')
-        return ''
+                .replace(/[^a-zA-Z\d\s]+/g, "-")
+                .replace(/\s/g, "-");
+        return '';
     }, [])
     React.useEffect(() => {
         const subscription = watch((value, { name }) => {
@@ -77,7 +77,8 @@ function PostForm({ post }) {
         <form onSubmit={handleSubmit(submit)} className='flex flex-wrap' >
             <div className='w-2/3 px-2'>
                 <Input
-                    label='Title'
+                    label='Title:'
+                    placeholder="Title"
                     className="mb-4"
                     {...register("title", { required: true })}
                 />
